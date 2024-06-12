@@ -71,17 +71,23 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 const gallery = document.querySelector('.gallery');
 
 const markup = images
-  .map((image) => `<li>
-  <a href="${image.original}">
-    <img src="${image.preview}" data-source="${image.original}" alt="${image.description}">
-  </a>
-  </li>`)
+  .map((image) => 
+    `<li class="gallery-item">
+	<a class="gallery-link" href="${image.original}">
+		<img 
+			class="gallery-image" 
+			src="${image.preview}" 
+			alt="${image.description}" 
+			/>
+	</a>
+</li>
+`)
   .join("");
 
 gallery.insertAdjacentHTML("beforeEnd", markup);
 
 const lightbox = new SimpleLightbox(
-  '.gallery-item a',
+  '.gallery a',
   {
     captions: true,
     captionSelector: 'img',
